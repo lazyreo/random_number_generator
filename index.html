@@ -3,22 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Games!</title>
+    <meta name="description" content="Set a range, pick a number, and see if you match the roll. A quick guess-the-number mini game.">
+    <title>Guess the Number — Fun Games</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="MainHeader">GUESS THE NUMBER</h1>
-    <p>Minimum</p>
-    <input type="number" id="MinimumValue"><br>
-    <p>Maximum</p>
-    <input type="number" id="MaximumValue"><br><br><br><br>
-    <p>Your Guess</p>
-    <input type="number" id="GuessedNumber">
-    <button id="GuessBtn">Try!</button>
-    <p id="ResultNumber"></p><br>
-    <p id="ResultMessage"></p>
+    <header class="site-header">
+        <h1 id="MainHeader">Guess the Number</h1>
+        <p class="tagline">Set your range, make a guess, and see if luck is on your side.</p>
+    </header>
+
+    <main class="game">
+        <section class="game-card" aria-labelledby="MainHeader">
+            <form id="gameForm" class="game-form" novalidate>
+                <fieldset class="field-group">
+                    <legend>Your range</legend>
+                    <div class="field-row">
+                        <label for="MinimumValue">Minimum</label>
+                        <input type="number" id="MinimumValue" name="min" value="0" step="1" required>
+                    </div>
+                    <div class="field-row">
+                        <label for="MaximumValue">Maximum</label>
+                        <input type="number" id="MaximumValue" name="max" value="10" step="1" required>
+                    </div>
+                </fieldset>
+
+                <fieldset class="field-group field-group--guess">
+                    <legend>Your turn</legend>
+                    <div class="field-row">
+                        <label for="GuessedNumber">Your guess</label>
+                        <input type="number" id="GuessedNumber" name="guess" step="1" required
+                            placeholder="Number in range">
+                    </div>
+                    <button type="submit" id="GuessBtn">Try!</button>
+                </fieldset>
+            </form>
+
+            <div class="results" aria-live="polite" aria-atomic="true">
+                <p id="ResultNumber" class="result-number" role="status"></p>
+                <p id="ResultMessage" class="result-message"></p>
+            </div>
+
+            <button type="button" id="PlayAgainBtn" class="btn-secondary" hidden>
+                Play again
+            </button>
+        </section>
+
+        <section class="how-to" aria-labelledby="how-heading">
+            <h2 id="how-heading">How it works</h2>
+            <ol>
+                <li>Choose a minimum and maximum (whole numbers).</li>
+                <li>Enter a guess inside that range.</li>
+                <li>Press <strong>Try!</strong> — a random number in the range is rolled and compared to your guess.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Made for fun — refresh anytime for a clean slate.</p>
+    </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
